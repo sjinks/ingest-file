@@ -36,12 +36,14 @@ jobs:
       - name: Push docker images (hash)
         if: (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags')) && github.actor != 'dependabot[bot]'
         run: |
-          echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
+          echo "${TOKEN}" | docker login ghcr.io -u "${GITHUB_ACTOR}" --password-stdin
 
           docker tag ghcr.io/${{ github.repository }} ghcr.io/${{ github.repository }}:${GITHUB_SHA}
           docker push ghcr.io/${{ github.repository }}:${GITHUB_SHA}
           docker tag ghcr.io/${{ github.repository }} ghcr.io/${{ github.repository }}:cache
           docker push ghcr.io/${{ github.repository }}:cache
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Push docker images for tags
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
         run: |
