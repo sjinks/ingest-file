@@ -107,6 +107,11 @@ RUN echo "deb http://http.us.debian.org/debian stable non-free" >/etc/apt/source
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
   && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
+ADD https://github.com/tesseract-ocr/tessdata_best/raw/refs/heads/main/bel.traineddata /usr/share/tesseract-ocr/5/tessdata/bel.traineddata
+ADD https://github.com/tesseract-ocr/tessdata_best/raw/refs/heads/main/eng.traineddata /usr/share/tesseract-ocr/5/tessdata/eng.traineddata
+ADD https://github.com/tesseract-ocr/tessdata_best/raw/refs/heads/main/rus.traineddata /usr/share/tesseract-ocr/5/tessdata/rus.traineddata
+ADD https://github.com/tesseract-ocr/tessdata_best/raw/refs/heads/main/ukr.traineddata /usr/share/tesseract-ocr/5/tessdata/ukr.traineddata
+
 # Set up the locale and make sure the system uses unicode for the file system.
 ENV LANG='en_US.UTF-8' \
   TZ='UTC' \
