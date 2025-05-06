@@ -20,6 +20,6 @@ jobs:
       - name: Push docker cache (hash)
         run: |
           echo "${CR_PAT}" | docker login ghcr.io -u "${GITHUB_ACTOR}" --password-stdin
-          docker push ghcr.io/alephdata/ingest-file:cache
+          docker push ghcr.io/${{ github.repository }}:cache
         env:
           CR_PAT: ${{ secrets.CR_PAT }}
