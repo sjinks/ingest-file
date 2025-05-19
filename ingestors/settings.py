@@ -36,6 +36,7 @@ NER_MODELS = {
     "nob": "nb_core_news_sm",
     "nor": "nb_core_news_sm",
     "dan": "da_core_news_sm",
+    "ukr": "uk_core_news_trf",
 }
 
 # FastText type prediction model file

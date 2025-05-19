@@ -147,6 +147,8 @@ RUN python3 -m spacy download el_core_news_sm \
   && python3 -m spacy download da_core_news_sm
 # RUN python3 -m spacy download zh_core_web_sm
 
+RUN python3 -m spacy download uk_core_news_trf
+
 COPY . /ingestors
 WORKDIR /ingestors
 RUN pip install --no-cache-dir --config-settings editable_mode=compat --use-pep517 -e /ingestors
